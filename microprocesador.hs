@@ -8,14 +8,15 @@ data Microprocesador = Microprocesador {
 
 xt8088 = Microprocesador 0 0 0 [] [] 
 
-nop micro = micro {
-		pc = incpc micro
+nop = incpc
+
+incpc micro = micro {
+		pc = incpc_ micro
 }
 
-add micro = micro {
+add micro = incpc micro {
 	a = a micro + b micro,
-	b = 0,
-	pc = incpc micro
+	b = 0
 }
 
 div micro = micro {
@@ -23,15 +24,13 @@ div micro = micro {
 	b = 0
 }
 
-swap micro = micro {
+swap micro = incpc micro {
 	a = b micro,
-	b = a micro,
-	pc = incpc micro
+	b = a micro
 }
 
-incpc  = (+1) . pc 
+incpc_  = (+1) . pc 
 
-lodv n micro = micro {
-	a = n,
-	pc = incpc micro
+lodv n micro = incpc micro {
+	a = n
 } 
