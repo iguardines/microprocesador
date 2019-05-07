@@ -1,6 +1,6 @@
 data Microprocesador = Microprocesador {
-	a:: Int,
-	b::Int,
+	acumuladorA:: Int,
+	acumuladorB::Int,
 	pc:: Int,
 	etiqueta::[String],
 	memoria::[String]
@@ -15,22 +15,22 @@ incpc micro = micro {
 }
 
 add micro = incpc micro {
-	a = a micro + b micro,
-	b = 0
+	acumuladorA = acumuladorA micro + acumuladorB micro,
+	acumuladorB = 0
 }
 
 div micro = micro {
 	--a = a micro / b micro,
-	b = 0
+	acumuladorB = 0
 }
 
 swap micro = incpc micro {
-	a = b micro,
-	b = a micro
+	acumuladorA = acumuladorB micro,
+	acumuladorB = acumuladorA micro
 }
 
 incpc_  = (+1) . pc 
 
 lodv n micro = incpc micro {
-	a = n
+	acumuladorA = n
 } 
