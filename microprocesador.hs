@@ -1,6 +1,6 @@
 data Microprocesador = Microprocesador {
-	acumuladorA:: Int,
-	acumuladorB::Int,
+	acumuladorA:: Float,
+	acumuladorB:: Float,
 	pc:: Int,
 	etiqueta::[String],
 	memoria::[String]
@@ -19,10 +19,9 @@ add micro = incpc micro {
 	acumuladorB = 0
 }
 
-div micro = micro {
-	--a = a micro / b micro,
-	acumuladorB = 0
-}
+divide micro
+           | acumuladorB micro == 0 = micro { etiqueta = ["DIVISION BY ZERO"], pc=6 }
+           | otherwise = micro { acumuladorA = (acumuladorA micro / acumuladorB micro), acumuladorB = 0}
 
 swap micro = incpc micro {
 	acumuladorA = acumuladorB micro,
