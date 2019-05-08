@@ -3,10 +3,10 @@ data Microprocesador = Microprocesador {
 	acumuladorB:: Float,
 	pc:: Int,
 	etiqueta::[String],
-	memoria::[String]
+	memoria::[Int]
 } deriving (Show)
 
-xt8088 = Microprocesador 0 0 0 [] [] 
+xt8088 = Microprocesador 0 0 0 [] [1..20] 
 
 nop = incpc
 
@@ -33,3 +33,10 @@ incpc_  = (+1) . pc
 lodv n micro = incpc micro {
 	acumuladorA = n
 } 
+
+str pos val micro = micro {
+	memoria = agregarPosicion pos val (memoria micro) 
+}
+
+agregarPosicion  0 valor lista = [valor] ++ drop 1 lista   
+agregarPosicion posicion valor lista = take (posicion - 1) lista ++ [valor]  ++ drop posicion lista
