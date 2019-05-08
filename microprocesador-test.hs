@@ -74,5 +74,9 @@ Microprocesador {acumuladorA = 0.0, acumuladorB = 0.0, pc = 0, etiqueta = "", me
 *MicroEntrega1> str 2 5 at8086
 Microprocesador {acumuladorA = 0.0, acumuladorB = 0.0, pc = 0, etiqueta = "", memoria = [1,5,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}
 
-
+--LOD 2 de un procesador xt8088 con la memoria vacía (1024 posiciones con valores cero) debe dejar con cero el acumulador A (cero = ausencia de información)
+*MicroEntrega1> fp20
+Microprocesador {acumuladorA = 0.0, acumuladorB = 0.0, pc = 0, etiqueta = "", memoria = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]}
+*MicroEntrega1> lod 2 fp20
+Microprocesador {acumuladorA = 0.0, acumuladorB = 0.0, pc = 1, etiqueta = "", memoria = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]}
 

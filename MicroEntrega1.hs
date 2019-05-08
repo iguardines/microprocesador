@@ -5,7 +5,7 @@ data Microprocesador = Microprocesador {
 	acumuladorB:: Float,
 	pc:: Int,
 	etiqueta::String,
-	memoria::[Int]
+	memoria::[Float]
 } deriving (Show)
 
 xt8088 = Microprocesador 0 0 0 "" (take 1024 (repeat 0)) 
@@ -38,12 +38,17 @@ lodv n micro = incpc micro {
 	acumuladorA = n
 } 
 
-str pos val micro = micro {
+str pos val micro =incpc micro {
 	memoria = agregarPosicion pos val (memoria micro) 
 }
+
+lod pos micro =incpc micro {
+				acumuladorA = valorEnPosicion pos micro
+		  }
 
 agregarPosicion  0 valor lista = [valor] ++ drop 1 lista   
 agregarPosicion posicion valor lista = take (posicion - 1) lista ++ [valor]  ++ drop posicion lista
 
+valorEnPosicion pos micro = (head . drop (pos-1)) (memoria micro) 
 
 mensajeError  = etiqueta
