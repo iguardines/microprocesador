@@ -23,6 +23,17 @@ add micro = incpc micro {
 	acumuladorB = 0
 }
 
+
+--Punto 3)
+--Implementar el siguiente programa, que permite sumar 10 + 22
+
+-- LODV 10   // Cargo el valor 10 en el acumulador A
+-- SWAP      // Cargo el valor 10 en el acumulador B (paso de A a B)
+-- LODV 22   // Cargo el valor 22 en el acumulador A
+-- ADD       // Realizo la suma y el resultado queda en el acu
+
+programaSuma  = (add . lodv 22 . swap . lodv 10 ) xt8088
+
 divide micro
            | acumuladorB micro == 0 = micro { etiqueta = "DIVISION BY ZERO", pc=6 }
            | otherwise = micro { acumuladorA = (acumuladorA micro / acumuladorB micro), acumuladorB = 0}
