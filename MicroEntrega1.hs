@@ -1,11 +1,11 @@
 module MicroEntrega1 where
 
 data Microprocesador = Microprocesador {
-	acumuladorA:: Float,
-	acumuladorB:: Float,
+	acumuladorA:: Int,
+	acumuladorB:: Int,
 	pc:: Int,
 	etiqueta::String,
-	memoria::[Float]
+	memoria::[Int]
 } deriving (Show)
 
 xt8088 = Microprocesador 0 0 0 "" (take 1024 (repeat 0)) 
@@ -36,7 +36,7 @@ programaSuma  = (add . lodv 22 . swap . lodv 10 ) xt8088
 
 divide micro
            | acumuladorB micro == 0 = micro { etiqueta = "DIVISION BY ZERO", pc=6 }
-           | otherwise = micro { acumuladorA = (acumuladorA micro / acumuladorB micro), acumuladorB = 0}
+           | otherwise = micro { acumuladorA = div (acumuladorA micro)  (acumuladorB micro), acumuladorB = 0}
 
 swap micro = incpc micro {
 	acumuladorA = acumuladorB micro,
