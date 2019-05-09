@@ -60,6 +60,6 @@ lod pos micro =incpc micro {
 agregarPosicion  0 valor lista = [valor] ++ drop 1 lista   
 agregarPosicion posicion valor lista = take (posicion - 1) lista ++ [valor]  ++ drop posicion lista
 
-valorEnPosicion pos micro = (head . drop (pos-1)) (memoria micro) 
+valorEnPosicion pos micro = (head . drop (pos-1) . memoria) micro 
 
 mensajeError  = etiqueta
